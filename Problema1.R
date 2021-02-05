@@ -54,7 +54,7 @@ reproduceAleatoria <- function(){
     initUrnas()
   }
   # Se elige una urna al azar de donde escoger canción; P(urna1) = (n1+n3)/numCanciones; P(urna2) = n2/numCanciones; P(urna3) = 0
-  if(probabilidad >= n2/numCanciones){
+  if(probabilidad >= (n2-1)/numCanciones){
     print(paste("Canción a reproducir: ",  caso1()))
   }else{
     # Nos aseguramos que n2 sea diferente de 0, aunque teóricamente no sea necesario, lo hacemos para darle robustez al programa.
@@ -109,7 +109,8 @@ caso1 <- function(){
   return(cancion)
 }
 
-# Caso 2, se va a sacar una canción de la urna 2. Si solo hay una canción en la urna 2 se elige esa canción.
+# Caso 2, se va a sacar una canción de la urna 2. Si solo hay una canción en la urna 2 significa que esa canción está realmente en la urna 4
+# este caso no debe darse, el caso2 solo debe suceder si hay más de una canción en la urna 2.
 # Si hay más de una canción, cada canción, excepto por la última que haya sido reproducida de esta urna, tiene probabilidad
 # equiprobable de salir, la última canción reproducida de esta urna tiene probabilidad 0 de salir.
 caso2 <- function(){
